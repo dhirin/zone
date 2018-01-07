@@ -2,8 +2,9 @@
 """
 Created on Sat Nov 25 18:33:17 2017
 
-@author: n25659
+@author: Ignacio Iglesias
 """
+#Next proyect get points and info from google places
 
 import urllib.request, json, urllib
 import requests
@@ -29,8 +30,8 @@ def GoogPlac(lat,lng,radius,types,key,keyword): #construyendo la url
   return request
   
   
-resp = GoogPlac(40.546285,-3.6277594,1000,'bank&atm',   #poner lat, lng y radio y typo
-               'AIzaSyA1C65QB2nqqpoNvQ0HDP5PlNE8wB65hJw',
+resp = GoogPlac(40.546285,-3.6277594,1000,'bank&atm',   #set lat, lng y radius and type. Set de GOOGLE API KEY
+               'Put_Here_Your_Google_Api_Places_Key',
                '')
 
 print(resp.text[:500])
@@ -48,6 +49,6 @@ for result in resp_dic['results']:      #recorriendo el resultado para comparar
 
 results_frm = pd.DataFrame(resp_dic['results'])
 
-results_frm.to_csv('Zona.csv', sep=';',index=False, encoding='cp1252')
+results_frm.to_csv('Zone.csv', sep=';',index=False, encoding='cp1252')
 
 print(results_frm)
